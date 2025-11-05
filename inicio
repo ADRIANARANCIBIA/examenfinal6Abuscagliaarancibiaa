@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="es">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoVerde - Cuidado del Medio Ambiente</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+      padding: 1rem 2rem;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.7;
+    }
+
+    /* Sections */
+    section {
+      min-height: 100%;
+      padding: 6rem 2rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section-content {
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    /* Hero Section */
+    #inicio {
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-content {
+      padding: 2rem;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .animal-icons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      font-size: 4rem;
+      margin: 3rem 0;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* About Section */
+    #nosotros {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+    /* Blog Section */
+    #blog {
+      background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .blog-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .blog-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .blog-card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+      line-height: 1.4;
+    }
+
+    .blog-card-excerpt {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #888;
+      border-top: 1px solid #eee;
+      padding-top: 1rem;
+    }
+
+    .blog-date {
+      font-weight: 500;
+    }
+
+    .blog-author {
+      font-style: italic;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .about-card {
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .about-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .card-text {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+
+    /* Contact Section */
+    #contacto {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+      font-family: inherit;
+      color: #2c3e50;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: start;
+      gap: 1rem;
+    }
+
+    .info-icon {
+      font-size: 2rem;
+      min-width: 2rem;
+    }
+
+    .info-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-content p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .success-message {
+      display: none;
+      padding: 1rem;
+      background: rgba(76, 175, 80, 0.9);
+      border-radius: 8px;
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    .whatsapp-link {
+      color: #25d366;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .whatsapp-link:hover {
+      color: #128c7e;
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .animal-icons {
+        font-size: 3rem;
+        gap: 1rem;
+      }
+
+      section {
+        padding: 5rem 1rem 3rem;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <nav>
+   <div class="nav-container">
+    <div class="logo" id="site-title"><span>🌱</span> <span>EcoVerde</span>
+    </div>
+    <ul class="nav-links">
+     <li><a onclick="scrollToSection('inicio')">Inicio</a></li>
+     <li><a onclick="scrollToSection('nosotros')">Nosotros</a></li>
+     <li><a onclick="scrollToSection('blog')">Blog</a></li>
+     <li><a onclick="scrollToSection('contacto')">Contacto</a></li>
+    </ul>
+   </div>
+  </nav>
+  <section id="inicio">
+   <div class="section-content">
+    <div class="hero-content">
+     <h1 class="hero-title" id="hero-title">Protegiendo Nuestro Planeta</h1>
+     <p class="hero-subtitle" id="hero-subtitle">Juntos por un futuro sostenible y un medio ambiente saludable</p>
+     <div class="animal-icons"><span>🌍</span> <span>🌳</span> <span>♻️</span> <span>🌿</span>
+     </div><a class="cta-button" onclick="scrollToSection('contacto')">Únete al Cambio</a>
+    </div>
+   </div>
+  </section>
+  <section id="nosotros">
+   <div class="section-content">
+    <h2 class="section-title" id="about-title">Nuestra Misión</h2>
+    <p class="section-subtitle" id="about-text">Trabajamos por la conservación ambiental y la promoción de prácticas sostenibles</p>
+    <div class="about-grid">
+     <div class="about-card">
+      <div class="card-icon">
+       🌱
+      </div>
+      <h3 class="card-title">Conservación</h3>
+      <p class="card-text">Protegemos ecosistemas naturales y promovemos la biodiversidad para las futuras generaciones.</p>
+     </div>
+     <div class="about-card">
+      <div class="card-icon">
+       ♻️
+      </div>
+      <h3 class="card-title">Reciclaje</h3>
+      <p class="card-text">Fomentamos la economía circular y reducimos los residuos mediante programas de reciclaje efectivos.</p>
+     </div>
+     <div class="about-card">
+      <div class="card-icon">
+       🌍
+      </div>
+      <h3 class="card-title">Educación Ambiental</h3>
+      <p class="card-text">Concientizamos sobre el cambio climático y enseñamos prácticas sostenibles en comunidades.</p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <section id="blog">
+   <div class="section-content">
+    <h2 class="section-title" id="blog-title">Nuestro Blog</h2>
+    <p class="section-subtitle" id="blog-subtitle">Últimas noticias y consejos para cuidar nuestro medio ambiente</p>
+    <div class="blog-grid">
+     <article class="blog-card">
+      <div class="blog-icon">
+       🌱
+      </div>
+      <h3 class="blog-card-title">10 Consejos para Reducir tu Huella de Carbono</h3>
+      <p class="blog-card-excerpt">Descubre maneras sencillas de contribuir al cuidado del planeta desde tu hogar con estos consejos prácticos y efectivos.</p>
+      <div class="blog-meta"><span class="blog-date">15 Nov 2024</span> <span class="blog-author">Por EcoVerde</span>
+      </div>
+     </article>
+     <article class="blog-card">
+      <div class="blog-icon">
+       ♻️
+      </div>
+      <h3 class="blog-card-title">La Importancia del Reciclaje en las Ciudades</h3>
+      <p class="blog-card-excerpt">Exploramos cómo el reciclaje urbano puede transformar nuestras comunidades y crear un futuro más sostenible.</p>
+      <div class="blog-meta"><span class="blog-date">12 Nov 2024</span> <span class="blog-author">Por EcoVerde</span>
+      </div>
+     </article>
+     <article class="blog-card">
+      <div class="blog-icon">
+       🌍
+      </div>
+      <h3 class="blog-card-title">Energías Renovables: El Futuro es Ahora</h3>
+      <p class="blog-card-excerpt">Conoce las últimas innovaciones en energía solar y eólica que están revolucionando la forma en que consumimos energía.</p>
+      <div class="blog-meta"><span class="blog-date">8 Nov 2024</span> <span class="blog-author">Por EcoVerde</span>
+      </div>
+     </article>
+    </div>
+   </div>
+  </section>
+  <section id="contacto">
+   <div class="section-content">
+    <h2 class="section-title" id="contact-title">Únete a Nosotros</h2>
+    <p class="section-subtitle" id="contact-subtitle">¿Quieres ser parte del cambio? Juntos podemos hacer la diferencia</p>
+    <div class="contact-container">
+     <div class="contact-form">
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+       <div class="form-group"><label for="name">Nombre</label> <input type="text" id="name" name="name" required>
+       </div>
+       <div class="form-group"><label for="email">Email</label> <input type="email" id="email" name="email" required>
+       </div>
+       <div class="form-group"><label for="message">Mensaje</label> <textarea id="message" name="message" required></textarea>
+       </div><button type="submit" class="submit-button">Enviar Mensaje</button>
+       <div class="success-message" id="successMessage">
+        ¡Mensaje enviado con éxito! Te contactaremos pronto.
+       </div>
+      </form>
+     </div>
+     <div class="contact-info">
+      <div class="info-item">
+       <div class="info-icon">
+        📧
+       </div>
+       <div class="info-content">
+        <h3>Email</h3>
+        <p>info@ecoverde.org</p>
+       </div>
+      </div>
+      <div class="info-item">
+       <div class="info-icon">
+        📱
+       </div>
+       <div class="info-content">
+        <h3>Teléfono</h3>
+        <p>+34 987 654 321</p>
+       </div>
+      </div>
+      <div class="info-item">
+       <div class="info-icon">
+        💬
+       </div>
+       <div class="info-content">
+        <h3>WhatsApp</h3>
+        <p><a href="https://wa.me/60030225" target="_blank" rel="noopener noreferrer" class="whatsapp-link">Enviar mensaje directo</a></p>
+       </div>
+      </div>
+      <div class="info-item">
+       <div class="info-icon">
+        📍
+       </div>
+       <div class="info-content">
+        <h3>Ubicación</h3>
+        <p>Av. Sostenible 456, EcoCity</p>
+       </div>
+      </div>
+      <div class="info-item">
+       <div class="info-icon">
+        ⏰
+       </div>
+       <div class="info-content">
+        <h3>Horario</h3>
+        <p>Lunes a Viernes: 8:00 - 17:00<br>
+         Sábados: 9:00 - 13:00</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <script>
+    const defaultConfig = {
+      site_title: "EcoVerde",
+      hero_title: "Protegiendo Nuestro Planeta",
+      hero_subtitle: "Juntos por un futuro sostenible y un medio ambiente saludable",
+      about_title: "Nuestra Misión",
+      about_text: "Trabajamos por la conservación ambiental y la promoción de prácticas sostenibles",
+      blog_title: "Nuestro Blog",
+      blog_subtitle: "Últimas noticias y consejos para cuidar nuestro medio ambiente",
+      contact_title: "Únete a Nosotros",
+      contact_subtitle: "¿Quieres ser parte del cambio? Juntos podemos hacer la diferencia",
+      background_color: "#f8fffe",
+      primary_color: "#2d8659",
+      secondary_color: "#52b788",
+      text_color: "#1b4332",
+      accent_color: "#95d5b2",
+      font_family: "Segoe UI",
+      font_size: 16
+    };
+
+    function scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      const form = document.getElementById('contactForm');
+      const successMessage = document.getElementById('successMessage');
+      
+      successMessage.classList.add('show');
+      form.reset();
+      
+      setTimeout(() => {
+        successMessage.classList.remove('show');
+      }, 5000);
+    }
+
+    async function onConfigChange(config) {
+      const baseSize = config.font_size || defaultConfig.font_size;
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseFontStack = 'Tahoma, Geneva, Verdana, sans-serif';
+      
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      document.body.style.fontSize = `${baseSize}px`;
+      
+      document.getElementById('site-title').querySelector('span:last-child').textContent = config.site_title || defaultConfig.site_title;
+      document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
+      document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      document.getElementById('about-title').textContent = config.about_title || defaultConfig.about_title;
+      document.getElementById('about-text').textContent = config.about_text || defaultConfig.about_text;
+      document.getElementById('blog-title').textContent = config.blog_title || defaultConfig.blog_title;
+      document.getElementById('blog-subtitle').textContent = config.blog_subtitle || defaultConfig.blog_subtitle;
+      document.getElementById('contact-title').textContent = config.contact_title || defaultConfig.contact_title;
+      document.getElementById('contact-subtitle').textContent = config.contact_subtitle || defaultConfig.contact_subtitle;
+      
+      document.body.style.backgroundColor = config.background_color || defaultConfig.background_color;
+      document.body.style.color = config.text_color || defaultConfig.text_color;
+      
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      
+      document.querySelector('.logo').style.color = primaryColor;
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.style.color = config.text_color || defaultConfig.text_color;
+      });
+      
+      document.querySelector('.cta-button').style.backgroundColor = primaryColor;
+      document.querySelector('.cta-button').style.color = config.background_color || defaultConfig.background_color;
+      
+      document.querySelectorAll('.about-card').forEach(card => {
+        card.style.backgroundColor = config.background_color || defaultConfig.background_color;
+      });
+      
+      document.querySelector('.submit-button').style.backgroundColor = accentColor;
+      document.querySelector('.submit-button').style.color = config.text_color || defaultConfig.text_color;
+      
+      document.querySelector('.hero-title').style.fontSize = `${baseSize * 2.2}px`;
+      document.querySelector('.hero-subtitle').style.fontSize = `${baseSize * 0.94}px`;
+      document.querySelector('.section-title').style.fontSize = `${baseSize * 1.56}px`;
+      document.querySelector('.section-subtitle').style.fontSize = `${baseSize * 0.75}px`;
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => {
+                config.primary_color = value;
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => {
+                config.accent_color = value;
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["site_title", config.site_title || defaultConfig.site_title],
+          ["hero_title", config.hero_title || defaultConfig.hero_title],
+          ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+          ["about_title", config.about_title || defaultConfig.about_title],
+          ["about_text", config.about_text || defaultConfig.about_text],
+          ["blog_title", config.blog_title || defaultConfig.blog_title],
+          ["blog_subtitle", config.blog_subtitle || defaultConfig.blog_subtitle],
+          ["contact_title", config.contact_title || defaultConfig.contact_title],
+          ["contact_subtitle", config.contact_subtitle || defaultConfig.contact_subtitle]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'999c7ddaf01be7ad',t:'MTc2MjM0NzE4MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
